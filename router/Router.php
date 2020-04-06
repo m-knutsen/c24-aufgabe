@@ -20,8 +20,14 @@ class Router implements RouterInterface
     {
         echo "<pre>";
         if(!$this->routeInfo->controllerExists()){
+            echo "controllernotfound";
+            var_dump($this->routeInfo);
             $errorRoute = new ErrorRoute("Error", "notFound");
             return (new Router($errorRoute))->executeRoute();
+        }
+        else
+        {
+            echo "exec";
         }
     }
 }
