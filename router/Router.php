@@ -26,19 +26,17 @@ class Router implements RouterInterface
         } else {
             $controllerType = $this->routeInfo->getControllerClassName();
             $controller = new $controllerType;
-            if(method_exists($controller, $this->routeInfo->action)){
+            if (method_exists($controller, $this->routeInfo->action)) {
                 //call_user_func($this->routeInfo->action, $controller);
                 $method = $this->routeInfo->action;
                 echo $controller->$method();
                 return;
-            }
-            elseif (method_exists($controller, Config::DEFAULT_ACTION)){
+            } elseif (method_exists($controller, Config::DEFAULT_ACTION)) {
                 //call_user_func(Config::DEFAULT_ACTION, $controller);
                 $method = Config::DEFAULT_ACTION;
                 echo $controller->$method();
                 return;
-            }
-            else {
+            } else {
                 $errorRoute = new ErrorRoute("Error", "notFound");
                 return (new Router($errorRoute))->executeRoute();
             }
