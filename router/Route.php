@@ -41,4 +41,9 @@ class Route implements RouteInterface
     {
         // TODO: Implement actionExists() method.
     }
+
+    function getControllerClassNameWithoutNamespace()
+    {
+        return $this->controller . "Controller";
+    }
 }

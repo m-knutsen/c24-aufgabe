@@ -5,7 +5,7 @@ class ErrorController implements ControllerInterface
 {
     public function index()
     {
-        return "HalloController/index";
+        echo "ErrorController/index";
     }
     public function notFound()
     {
