@@ -11,4 +11,5 @@ class Config
 
     const DEFAULT_ACTION = "index";
     const DEFAULT_CONTROLLER = "home";
+    const LOG_PATH = "./log/c24.log";
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace c24\Controller;
-class HomeController
+class HomeController implements ControllerInterface
 {
     public function index()
     {

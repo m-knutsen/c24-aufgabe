@@ -1,23 +1,27 @@
 <?php
 
 namespace c24\Router;
-use c24\Config\Config;
+
+use c24\System\Log;
 
 class Router implements RouterInterface
 {
-    protected $controller;
-    protected $action;
-    protected $parameters;
+    /**
+     * @var RouteInterface
+     */
+    private $routeInfo;
 
-    function executeRoute(RouteInterface $routeInfo)
+    function __construct(RouteInterface $routeInfo)
     {
-        $query = $_SERVER["QUERY_STRING"];
-        $queryParts = explode("/", $query);
-        if (count($queryParts) >= 1) {
-            $this->controller = $queryParts[0] ?? Config::DEFAULT_CONTROLLER;
-        }
-        if (count($queryParts) >= 2) {
-            $this->action = $queryParts[1] ?? Config::DEFAULT_CONTROLLER;
+        $this->routeInfo = $routeInfo;
+    }
+
+    function executeRoute()
+    {
+        echo "<pre>";
+        if(!$this->routeInfo->controllerExists()){
+            $errorRoute = new ErrorRoute("Error", "notFound");
+            return (new Router($errorRoute))->executeRoute();
         }
     }
 }
