@@ -12,4 +12,8 @@ class Config
     const DEFAULT_ACTION = "index";
     const DEFAULT_CONTROLLER = "home";
     const LOG_PATH = "./log/c24.log";
+
+    public static function getDBDsn(){
+        return "mysql:host=". Config::DB_HOST .";dbname=". Config::DB_DATABASE;
+    }
 }

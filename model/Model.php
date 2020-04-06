@@ -22,4 +22,5 @@ abstract class Model implements ModelInterface
     public function get($key, $default = null){
         return $this->data[$key] ?? $default;
     }
+
 }
